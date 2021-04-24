@@ -30,11 +30,12 @@ const checkout = (req,res) =>{
             }
         },
           back_urls: {
-          success: `http://localhost:3000/pagosuccess`,
-          failure: `http://localhost:3000/pagofailure`,
-          pending: `http://localhost:3000/pagopending`
+          success: `https://rafamontero-mp-ecommercenodejs.herokuapp.com/pagosuccess`,
+          failure: `https://rafamontero-mp-ecommercenodejs.herokuapp.com/pagofailure`,
+          pending: `https://rafamontero-mp-ecommercenodejs.herokuapp.com/pagopending`
         },
         "auto_return": "approved",
+        notification_url: 'https://rafamontero-mp-ecommercenodejs.herokuapp.com/notifications'
       };
       
       mercadopago.preferences.create(preference)
