@@ -54,7 +54,7 @@
                                     <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink" data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
                                         <div class="as-tilegallery-element as-image-selected">
                                             <div class=""></div>
-                                            <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url({{ img }}) 2x);">
+                                            <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url({{{ img }}}) 2x);">
                                         </div>
                                         
                                     </div>
@@ -68,23 +68,26 @@
 
                         </div>
                         <div class="as-producttile-info" style="float:left;min-height: 168px;">
-                            <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
+                            <form action="http://localhost:3000/checkout" method="POST" class="as-producttile-titlepricewraper" style="min-height: 128px;">
                                 <div class="as-producttile-title">
                                     <h3 class="as-producttile-name">
                                         <p class="as-producttile-tilelink">
                                             <span data-ase-truncate="2"> {{ title }} </span>
                                         </p>
-
+                                        <input type="hidden" name="title" value="{{{ title }}}">
                                     </h3>
                                 </div>
                                 <h3 >
-                                    {{ price }}
+                                   $ {{ price }}
                                 </h3>
+                                <input type="hidden" name="price" value={{ price }}>
                                 <h3 >
-                                    {{ unit }}
+                                    Cantidad: {{ unit }}
                                 </h3>
-                            </div>
-                            <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                <input type="hidden" name="unit" value={{ unit }}>
+                                <input type="hidden" name="img" value="{{{img_url}}}"/>
+                                <input type="submit" class="mercadopago-button" value="Pagar"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -92,4 +95,5 @@
         </div>
     </div>
 </div>
+<script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
    
