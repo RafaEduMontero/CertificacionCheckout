@@ -51,7 +51,7 @@ app.get('/pagopending',(req,res) =>{
   res.send('<h1>Pendiente de Pago</h1>')
 });
 
-app.get('/notifications',(req,res)=>{
+app.post('/notifications',(req,res)=>{
   res.send('Hola soy notificacion')
   console.log(res.body)
   console.log(req.body)
