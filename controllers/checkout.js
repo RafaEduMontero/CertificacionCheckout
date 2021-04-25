@@ -24,7 +24,7 @@ const checkout = (req,res) =>{
                 number: 22223333
             },
             address:{
-                zip_code: '111',
+                zip_code: '1111',
                 street_name: 'False',
                 street_number: 123
             }
@@ -37,11 +37,23 @@ const checkout = (req,res) =>{
         "auto_return": "approved",
         notification_url: 'https://rafamontero-mp-ecommercenodejs.herokuapp.com/notifications',
         payment_methods: {
-          excluded_payment_methods:
-            [{id: 'amex'}]
-        },
-        excluded_payment_types: [{ id: "atm" }],
-        installments: 6, 
+          // declaramos el método de pago y sus restricciones
+                 excluded_payment_methods: [
+         // aca podemos excluir metodos de pagos, tengan en cuenta que es un array de objetos
+         // donde el id de cada objeto es la exclusión
+                   {
+                     id: "amex"
+         // acá estamos excluyendo el uso de la tarjeta American Express
+                   }
+                 ],
+                 excluded_payment_types: [{ id: "atm" }],
+          // aca podemos excluir TIPOS de pagos, es un array de objetos
+         // Por ejemplo, aca estamos excluyendo pago por cajero
+                 installments: 6, 
+         // mayor cantidad de cuotas permitidas
+                 default_installments: 6 
+         // la cantidad de cuotas que van a aparecer por defecto
+               },  
       };
       
       mercadopago.preferences.create(preference)
