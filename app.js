@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 const mercadopago = require ('mercadopago');
 const checkout = require('./controllers/checkout');
 const webHook = require('./controllers/webHook');
+const pagoSuccess = require('./controllers/pagoSucces');
 
 //Credenciales
 const PROD_ACCESS_TOKEN = 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398'
@@ -41,12 +42,8 @@ app.get('/detail', function (req, res) {
 });
 
 app.get('/pagosuccess',(req,res) =>{
-  const querystring = Window.location.search;
-  const params = new URLSearchParams(querystring);
-  const paymentId = params.get('payment_id');
-  const externaRef = params.get('external_reference');
-  const payment_method_id = params.get('payment_type')
-  res.send(`<h1>Metodo de pago: ${payment_method_id} </h1>`)
+  
+  res.send(`<h1>Metodo de pago: ${pagoSuccess()} </h1>`)
 });
 
 app.get('/pagofailure',(req,res) =>{
@@ -57,6 +54,6 @@ app.get('/pagopending',(req,res) =>{
   res.send('<h1>Pendiente de Pago</h1>')
 });
 
-app.post('/notifications',webHook)
+app.post('/notifications',(res,req) => webHook(res,req))
 
 app.listen(port);
