@@ -41,7 +41,12 @@ app.get('/detail', function (req, res) {
 });
 
 app.get('/pagosuccess',(req,res) =>{
-  res.send('<h1>Pago Aprovado</h1>')
+  const querystring = window.location.search;
+  const params = new URLSearchParams(querystring);
+  const paymentId = params.get('payment_id');
+  const externaRef = params.get('external_reference');
+  const payment_method_id = params.get('payment_method_id')
+  res.send(`<h1>Metodo de pago: ${payment_method_id}</h1><h1>ID de Pago: ${paymentId}</h1><h1>Referencia Externa: ${externaRef}</h1>`)
 });
 
 app.get('/pagofailure',(req,res) =>{
