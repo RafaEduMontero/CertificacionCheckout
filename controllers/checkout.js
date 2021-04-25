@@ -37,9 +37,8 @@ const checkout = (req,res) =>{
         "auto_return": "approved",
         notification_url: 'https://rafamontero-mp-ecommercenodejs.herokuapp.com/notifications',
         payment_methods: {
-          excluded_payment_methods:{
+          excluded_payment_methods:
             [{id: 'amex'},{id: 'atm'}]
-          }
         }
       };
       
