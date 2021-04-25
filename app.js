@@ -46,7 +46,7 @@ app.get('/pagosuccess',(req,res) =>{
   const paymentId = params.get('payment_id');
   const externaRef = params.get('external_reference');
   const payment_method_id = params.get('payment_type')
-  res.send(`<h1>Metodo de pago: ${payment_method_id} ID de Pago: ${paymentId} External Ref: ${payment_method_id}</h1>`)
+  res.send(`<h1>Metodo de pago: ${payment_method_id} </h1>`)
 });
 
 app.get('/pagofailure',(req,res) =>{
