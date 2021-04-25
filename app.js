@@ -13,7 +13,6 @@ app.use(bodyParser.json())
 const mercadopago = require ('mercadopago');
 const checkout = require('./controllers/checkout');
 const webHook = require('./controllers/webHook');
-const pagoSuccess = require('./controllers/pagoSucces');
 
 //Credenciales
 const PROD_ACCESS_TOKEN = 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398'
