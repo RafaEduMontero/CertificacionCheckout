@@ -52,8 +52,6 @@ app.get('/pagopending',(req,res) =>{
   res.send('<h1>Pendiente de Pago</h1>')
 });
 
-app.post('/notifications',(req,res)=>{
-  webHook(req,res)
-})
+app.post('/notifications',webHook)
 
 app.listen(port);
