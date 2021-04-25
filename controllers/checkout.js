@@ -38,8 +38,10 @@ const checkout = (req,res) =>{
         notification_url: 'https://rafamontero-mp-ecommercenodejs.herokuapp.com/notifications',
         payment_methods: {
           excluded_payment_methods:
-            [{id: 'amex'},{id: 'atm'}]
-        }
+            [{id: 'amex'}]
+        },
+        excluded_payment_types: [{ id: "atm" }],
+        installments: 6, 
       };
       
       mercadopago.preferences.create(preference)

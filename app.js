@@ -62,7 +62,8 @@ app.post('/notifications',(req,res)=>{
       res.end("ok");
     });
   }
-  return res.status(200); 
+  res.status(200); 
+  res.send(body)
 })
 
 app.listen(port);
