@@ -42,8 +42,12 @@ app.get('/detail', function (req, res) {
 });
 
 app.get('/pagosuccess',(req,res) =>{
-  
-  res.send(`<h1>Metodo de pago: ${pagoSuccess()} </h1>`)
+  const url = req.url;
+  const params = URLSearchParams(url);
+  const paymentId = params.get('payment_id')
+  const externalRef = params.get('external_reference');
+  const paymetType = params.get('payment_type')
+  res.send(`<h1>Metodo de pago: ${paymetType} ID de Pago: ${paymentId} Referencia Externa: ${externalRef}</h1>`)
 });
 
 app.get('/pagofailure',(req,res) =>{
