@@ -57,6 +57,18 @@ app.get('/pagopending',(req,res) =>{
   res.send('<h1>Pendiente de Pago</h1>')
 });
 
-app.post('/notifications',(req,res)=>webHook(req,res))
+app.post('/notifications',(req,res)=>{
+  if (req.method === "POST") { 
+    let body = ""; 
+    req.on("data", chunk => {  
+      body += chunk.toString();
+    });
+    req.on("end", () => {  
+      console.log(body, "webhook response"); 
+      res.end("ok");
+    });
+  }
+  res.status(201);
+})
 
 app.listen(port);
