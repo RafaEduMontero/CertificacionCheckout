@@ -12,6 +12,7 @@ app.use(bodyParser.json())
 //SDK MP
 const mercadopago = require ('mercadopago');
 const checkout = require('./controllers/checkout');
+const webHook = require('./controllers/webHook');
 
 //Credenciales
 const PROD_ACCESS_TOKEN = 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398'
@@ -52,18 +53,7 @@ app.get('/pagopending',(req,res) =>{
 });
 
 app.post('/notifications',(req,res)=>{
-  if (req.method === "POST") { 
-    let body = ""; 
-    req.on("data", chunk => {  
-      body += chunk.toString();
-    });
-    req.on("end", () => {  
-      console.log(body, "webhook response"); 
-      res.end("ok");
-    });
-  }
-  res.status(200); 
-  res.send(body)
+  webHook(req,res)
 })
 
 app.listen(port);
