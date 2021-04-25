@@ -42,7 +42,7 @@ app.get('/detail', function (req, res) {
 
 app.get('/pagosuccess',(req,res) =>{
   const url = req.url;
-  const params = URLSearchParams(url);
+  const params = new URLSearchParams(url);
   const paymentId = params.get('payment_id')
   const externalRef = params.get('external_reference');
   const paymetType = params.get('payment_type')
