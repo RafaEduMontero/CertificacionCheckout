@@ -58,7 +58,7 @@ app.get('/pagopending',(req,res) =>{
 });
 
 app.post('/notifications',(req,res)=>{
-  console.log(req.body)
+  console.log(JSON.stringify(req.body))
   if (req.method === "POST") { 
     let body = ""; 
     req.on("data", chunk => {  
