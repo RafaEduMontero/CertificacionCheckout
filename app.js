@@ -52,9 +52,17 @@ app.get('/pagopending',(req,res) =>{
 });
 
 app.post('/notifications',(req,res)=>{
-  res.send('Hola soy notificacion')
-  console.log(res.body)
-  console.log(req.body)
+  if (req.method === "POST") { 
+    let body = ""; 
+    req.on("data", chunk => {  
+      body += chunk.toString();
+    });
+    req.on("end", () => {  
+      console.log(body, "webhook response"); 
+      res.end("ok");
+    });
+  }
+  return res.status(200); 
 })
 
 app.listen(port);
