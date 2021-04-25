@@ -35,7 +35,7 @@ const checkout = (req,res) =>{
           pending: `https://rafamontero-mp-ecommercenodejs.herokuapp.com/pagopending`
         },
         "auto_return": "approved",
-        notification_url: 'https://rafamontero-mp-ecommercenodejs.herokuapp.com/notifications?source_news=webhooks',
+        notification_url: 'https://rafamontero-mp-ecommercenodejs.herokuapp.com/notifications',
         payment_methods: {
           excluded_payment_methods:
             [{id: 'amex'}]
